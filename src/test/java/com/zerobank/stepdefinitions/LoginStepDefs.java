@@ -1,5 +1,6 @@
 package com.zerobank.stepdefinitions;
 
+import com.zerobank.pages.AccountSummaryPage;
 import com.zerobank.pages.BasePage;
 import com.zerobank.pages.LoginPage;
 import com.zerobank.utilities.ConfigurationReader;
@@ -26,7 +27,7 @@ public class LoginStepDefs {
         String currentTitle = Driver.getDriver().getTitle();
         Assert.assertTrue("Title is not matching",currentTitle.toLowerCase().contains(pageName.toLowerCase()));
         // second way to verify which tab I am at
-        String selectedTab = new BasePage().selectedTab.getText();
+        String selectedTab = new AccountSummaryPage().selectedTab.getText();
         Assert.assertEquals("Page is NOT matching",pageName,selectedTab);
 
     }
