@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "com/zerobank/stepdefinitions",
-        dryRun = false,
-        tags = "@neg"
+        dryRun = true,
+        tags = "@wip"
 )
 public class CukesRunner {
 }
