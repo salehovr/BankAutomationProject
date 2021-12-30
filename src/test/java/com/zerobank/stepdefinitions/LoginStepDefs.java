@@ -5,6 +5,7 @@ import com.zerobank.utilities.ConfigurationReader;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 
 public class LoginStepDefs {
@@ -20,7 +21,8 @@ public class LoginStepDefs {
         loginPage.login(u,p);
     }
     @Then("the {string} page should be displayed")
-    public void the_page_should_be_displayed(String string) {
-
+    public void the_page_should_be_displayed(String pageName) {
+        String currentTitle = Driver.getDriver().getTitle();
+        Assert.assertTrue("Title is not matching",currentTitle.toLowerCase().contains(pageName.toLowerCase()));
     }
 }
