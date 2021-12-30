@@ -26,6 +26,9 @@ public class LoginPage {
         submitButton.click();
     }
 
+    @FindBy(xpath = "//div[@class='alert alert-error']")
+    public WebElement errorMessage;
+
 
 
 }

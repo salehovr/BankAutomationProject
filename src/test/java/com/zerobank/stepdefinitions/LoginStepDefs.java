@@ -30,4 +30,10 @@ public class LoginStepDefs {
         Assert.assertEquals("Page is NOT matching",pageName,selectedTab);
 
     }
+
+    @Then("Error message {string} should be displayed")
+    public void errorMessageShouldBeDisplayed(String expectedText) {
+        String actualText = loginPage.errorMessage.getText();
+        Assert.assertEquals("Error message DO NOT match",expectedText,actualText);
+    }
 }
