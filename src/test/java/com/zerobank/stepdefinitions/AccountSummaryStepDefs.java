@@ -24,6 +24,12 @@ public class AccountSummaryStepDefs {
     }
     @Then("Credit Accounts table must have columns")
     public void credit_accounts_table_must_have_columns(List<String> expectedColumns) {
+        // for shortcut in Windows ALT+ENTER
+        List<String> actualColumnNames = BrowserUtils.getElementsText(new AccountSummaryPage().creditColumns);
+
+        Assert.assertEquals("Columns are NOT as expected",expectedColumns,actualColumnNames);
+
+
 
     }
 

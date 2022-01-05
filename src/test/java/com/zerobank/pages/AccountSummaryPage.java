@@ -10,5 +10,8 @@ public class AccountSummaryPage extends BasePage {
     @FindBy(tagName = "h2")
     public List<WebElement> accounts;
 
+    @FindBy(xpath = "(//thead)[3]//tr//th")
+    public List<WebElement> creditColumns;
+
 
 }
