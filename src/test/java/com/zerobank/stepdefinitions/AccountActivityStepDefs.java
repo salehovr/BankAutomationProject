@@ -3,6 +3,9 @@ package com.zerobank.stepdefinitions;
 import com.zerobank.pages.AccountActivityPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
+
+import java.util.List;
 
 public class AccountActivityStepDefs {
 
@@ -13,12 +16,14 @@ public class AccountActivityStepDefs {
         accountActivityPage.getTab(tab);
     }
     @Then("Account drop down should have {string} selected")
-    public void account_drop_down_should_have_selected(String string) {
-
+    public void account_drop_down_should_have_selected(String expectedAccountType) {
+        String actualAccountType = accountActivityPage.selectedOption();
+        Assert.assertEquals(expectedAccountType,actualAccountType);
     }
     @Then("Account drop down should have the following options")
-    public void account_drop_down_should_have_the_following_options(io.cucumber.datatable.DataTable dataTable) {
-
+    public void account_drop_down_should_have_the_following_options(List<String> expectedAccountList) {
+        List<String> actualAccountList = accountActivityPage.accountOptionsList();
+        Assert.assertEquals(expectedAccountList,actualAccountList);
     }
     @Then("Transactions table should have column names")
     public void transactions_table_should_have_column_names(io.cucumber.datatable.DataTable dataTable) {

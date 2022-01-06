@@ -1,8 +1,11 @@
 package com.zerobank.pages;
 
+import com.zerobank.utilities.BrowserUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class AccountActivityPage extends BasePage{
 
@@ -14,4 +17,8 @@ public class AccountActivityPage extends BasePage{
         return accountOptions.getFirstSelectedOption().getText();
     }
 
+    public List<String> accountOptionsList(){
+        Select accountOptionsDropDown = new Select(accountDropDown);
+        return BrowserUtils.getElementsText(accountOptionsDropDown.getOptions());
+    }
 }
