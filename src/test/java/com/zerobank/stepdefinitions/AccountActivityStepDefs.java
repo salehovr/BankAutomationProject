@@ -1,6 +1,7 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.AccountActivityPage;
+import com.zerobank.utilities.BrowserUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
@@ -29,7 +30,11 @@ public class AccountActivityStepDefs {
         Assert.assertTrue(expectedAccountList.containsAll(actualAccountList));
     }
     @Then("Transactions table should have column names")
-    public void transactions_table_should_have_column_names(io.cucumber.datatable.DataTable dataTable) {
+    public void transactions_table_should_have_column_names(List<String> expectedColumnNames) {
+        List<String> actualColumnNames = BrowserUtils.getElementsText(accountActivityPage.accountColumnNames);
+
+        Assert.assertEquals(expectedColumnNames,actualColumnNames);
+
 
     }
 

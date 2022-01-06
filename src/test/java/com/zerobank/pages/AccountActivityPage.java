@@ -22,4 +22,7 @@ public class AccountActivityPage extends BasePage{
         Select accountOptionsDropDown = new Select(accountDropDown);
         return BrowserUtils.getElementsTextWithoutDouble(accountOptionsDropDown.getOptions());
     }
+
+    @FindBy(xpath = "//thead/tr/th")
+    public List<WebElement> accountColumnNames;
 }
