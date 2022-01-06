@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+import java.util.Set;
 
 public class AccountActivityPage extends BasePage{
 
@@ -17,8 +18,8 @@ public class AccountActivityPage extends BasePage{
         return accountOptions.getFirstSelectedOption().getText();
     }
 
-    public List<String> accountOptionsList(){
+    public Set<String> accountOptionsList(){
         Select accountOptionsDropDown = new Select(accountDropDown);
-        return BrowserUtils.getElementsText(accountOptionsDropDown.getOptions());
+        return BrowserUtils.getElementsTextWithoutDouble(accountOptionsDropDown.getOptions());
     }
 }

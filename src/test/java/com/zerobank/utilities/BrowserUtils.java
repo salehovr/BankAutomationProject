@@ -1,14 +1,14 @@
 package com.zerobank.utilities;
 
+import io.cucumber.java.hu.Ha;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Function;
 
 import static org.junit.Assert.assertTrue;
@@ -37,6 +37,21 @@ public class BrowserUtils {
 
         //Create placeholder List<String>
         List<String> actualAsString = new ArrayList<>();
+
+        for (WebElement each : webElementList) {
+
+            actualAsString.add(each.getText());
+
+        }
+
+        return actualAsString;
+
+    }
+
+    public static Set<String> getElementsTextWithoutDouble(List<WebElement> webElementList){
+
+        //Create placeholder List<String>
+        Set<String> actualAsString = new HashSet<>();
 
         for (WebElement each : webElementList) {
 

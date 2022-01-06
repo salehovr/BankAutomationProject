@@ -5,7 +5,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class AccountActivityStepDefs {
 
@@ -22,10 +24,9 @@ public class AccountActivityStepDefs {
     }
     @Then("Account drop down should have the following options")
     public void account_drop_down_should_have_the_following_options(List<String> expectedAccountList) {
-        List<String> actualAccountList = accountActivityPage.accountOptionsList();
-        System.out.println("actualAccountList = " + actualAccountList);
-        System.out.println("expectedAccountList = " + expectedAccountList);
-        Assert.assertEquals(expectedAccountList,actualAccountList);
+        Set<String> actualAccountList = accountActivityPage.accountOptionsList();
+
+        Assert.assertTrue(expectedAccountList.containsAll(actualAccountList));
     }
     @Then("Transactions table should have column names")
     public void transactions_table_should_have_column_names(io.cucumber.datatable.DataTable dataTable) {
