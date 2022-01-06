@@ -11,6 +11,7 @@ Feature: Account Activity Features
     Then Account drop down should have the following options
       | Savings     |
       | Checking    |
+      | Savings     |
       | Loan        |
       | Credit Card |
       | Brokerage   |

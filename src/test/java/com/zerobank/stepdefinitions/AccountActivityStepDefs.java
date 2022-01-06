@@ -23,6 +23,8 @@ public class AccountActivityStepDefs {
     @Then("Account drop down should have the following options")
     public void account_drop_down_should_have_the_following_options(List<String> expectedAccountList) {
         List<String> actualAccountList = accountActivityPage.accountOptionsList();
+        System.out.println("actualAccountList = " + actualAccountList);
+        System.out.println("expectedAccountList = " + expectedAccountList);
         Assert.assertEquals(expectedAccountList,actualAccountList);
     }
     @Then("Transactions table should have column names")
