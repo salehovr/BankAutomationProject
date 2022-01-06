@@ -1,14 +1,16 @@
 package com.zerobank.stepdefinitions;
 
+import com.zerobank.pages.AccountActivityPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 public class AccountActivityStepDefs {
 
+    AccountActivityPage accountActivityPage = new AccountActivityPage();
 
     @Given("the user navigates to {string} tab")
-    public void the_user_navigates_to_tab(String string) {
-
+    public void the_user_navigates_to_tab(String tab) {
+        accountActivityPage.getTab(tab);
     }
     @Then("Account drop down should have {string} selected")
     public void account_drop_down_should_have_selected(String string) {
