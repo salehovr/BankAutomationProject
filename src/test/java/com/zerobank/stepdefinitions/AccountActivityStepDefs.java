@@ -1,42 +1,47 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.AccountActivityPage;
+import com.zerobank.pages.BasePage;
 import com.zerobank.utilities.BrowserUtils;
+import com.zerobank.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 public class AccountActivityStepDefs {
 
+    BasePage basePage = new BasePage();
     AccountActivityPage accountActivityPage = new AccountActivityPage();
+    @Given("the user navigates to {string} menu")
+    public void the_user_navigates_to_menu(String tab) {
+       basePage.getTab(tab);
+    }
 
-    @Given("the user navigates to {string} tab")
-    public void the_user_navigates_to_tab(String tab) {
-        accountActivityPage.getTab(tab);
+    @And("Account drop down should have {string} selected")
+    public void accountDropDownShouldHaveSelected(String expectedAccount) {
+        Assert.assertEquals("Expected account is not selected",expectedAccount,
+         accountActivityPage.selectedOption());
     }
-    @Then("Account drop down should have {string} selected")
-    public void account_drop_down_should_have_selected(String expectedAccountType) {
-        String actualAccountType = accountActivityPage.selectedOption();
-        Assert.assertEquals(expectedAccountType,actualAccountType);
-    }
+
     @Then("Account drop down should have the following options")
-    public void account_drop_down_should_have_the_following_options(List<String> expectedAccountList) {
-        Set<String> actualAccountList = accountActivityPage.accountOptionsList();
-
-        Assert.assertTrue(expectedAccountList.containsAll(actualAccountList));
-    }
-    @Then("Transactions table should have column names")
-    public void transactions_table_should_have_column_names(List<String> expectedColumnNames) {
-        List<String> actualColumnNames = BrowserUtils.getElementsText(accountActivityPage.accountColumnNames);
-
-        Assert.assertEquals(expectedColumnNames,actualColumnNames);
-
-
+    public void accountDropDownShouldHaveTheFollowingOptions(List<String> expectedOptions) {
+        List<String>actualOptions = BrowserUtils.getElementsText(accountActivityPage.accountOptions());
+        Assert.assertEquals("account do not match",expectedOptions,actualOptions);
     }
 
+    @And("Transactions table should have column names")
+    public void transactionsTableShouldHaveColumnNames(List<String> expectedColumns) {
+        List<String> actualColumns = BrowserUtils.getElementsText(accountActivityPage.accountColumnNames);
+        Assert.assertEquals("columns do not match",expectedColumns,actualColumns);
+    }
 
+    @And("if user clicks on {string} link at AccountSummary Page")
+    public void ifUserClicksOnLinkAtAccountSummaryPage(String account) {
+        Driver.getDriver().findElement(By.linkText(account)).click();
+        BrowserUtils.sleep(1);
+    }
 }

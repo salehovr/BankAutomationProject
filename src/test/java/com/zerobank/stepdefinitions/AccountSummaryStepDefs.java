@@ -4,33 +4,22 @@ import com.zerobank.pages.AccountSummaryPage;
 import com.zerobank.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
 public class AccountSummaryStepDefs {
 
-
-    @Then("Account summary page should have to following account types:")
-    public void account_summary_page_should_have_to_following_account_types(List<String> expectedAccountTypes) {
-
-        List<WebElement> accountsElements = new AccountSummaryPage().accounts;
-        // I need to turn the list of webelements into list of strings
-        List<String> actualAccountTypes = BrowserUtils.getElementsText(accountsElements);
-
-        Assert.assertEquals("Account Types are NOT as expected",expectedAccountTypes,actualAccountTypes);
-
-
+        AccountSummaryPage accountSummaryPage = new AccountSummaryPage();
+    @Then("Account Summary page should have the following account types")
+    public void account_Summary_page_should_have_the_following_account_types(List<String> expectedAccounts) {
+        List<String> actualAccounts = BrowserUtils.getElementsText(accountSummaryPage.accountTypes);
+        Assert.assertEquals("Account types does not match",expectedAccounts,actualAccounts);
     }
-    @Then("Credit Accounts table must have columns")
-    public void credit_accounts_table_must_have_columns(List<String> expectedColumns) {
-        // for shortcut in Windows ALT+ENTER
-        List<String> actualColumnNames = BrowserUtils.getElementsText(new AccountSummaryPage().creditColumns);
 
-        Assert.assertEquals("Columns are NOT as expected",expectedColumns,actualColumnNames);
-
-
-
+    @Then("Credit Accounts table must have these columns")
+    public void credit_Accounts_table_must_have_these_columns(List<String> expectedColumns) {
+        List<String> actualColumns = BrowserUtils.getElementsText(accountSummaryPage.actualColumnNames);
+        Assert.assertEquals("Column names do not match", expectedColumns,actualColumns);
     }
 
 }

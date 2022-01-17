@@ -4,12 +4,15 @@ import com.zerobank.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 
-    public LoginPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public LoginPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
+
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 
     @FindBy(id = "user_login")
     public WebElement usernameInput;
@@ -17,18 +20,15 @@ public class LoginPage {
     @FindBy(id = "user_password")
     public WebElement passwordInput;
 
-    @FindBy(name = "submit")
-    public WebElement submitButton;
-
-    public void login(String u,String p){
-        usernameInput.sendKeys(u);
-        passwordInput.sendKeys(p);
-        submitButton.click();
-    }
+    @FindBy(xpath = "//input[@name='submit']")
+    public WebElement loginButton;
 
     @FindBy(xpath = "//div[@class='alert alert-error']")
     public WebElement errorMessage;
 
-
-
+    public void login(String username, String password){
+        usernameInput.sendKeys(username);
+        passwordInput.sendKeys(password);
+        loginButton.click();
+    }
 }

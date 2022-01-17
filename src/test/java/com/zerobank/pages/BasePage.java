@@ -7,17 +7,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public abstract class BasePage {
-    public BasePage (){
+
+public class BasePage {
+    public BasePage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(className = "active")
+@FindBy(className = "active")
     public WebElement selectedTab;
 
-    public void getTab(String tab){
-        Driver.getDriver().findElement(By.linkText(tab)).click();
+
+    public void getTab(String menu){
+        String menuLocator = "//a[.='"+menu+"']";
+
+        Driver.getDriver().findElement(By.xpath(menuLocator)).click();
         BrowserUtils.sleep(1);
+
     }
 
 }
