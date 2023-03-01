@@ -20,7 +20,6 @@ public class loginStepDefs {
     public void the_user_is_on_the_login_page() {
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
         Driver.getDriver().findElement(By.id("signin_button")).click();
-
     }
 
 

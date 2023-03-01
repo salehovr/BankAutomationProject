@@ -17,10 +17,8 @@ public class Hooks {
         //scenario.isFailed() --> if scenario fails : returns true
 
         if (scenario.isFailed()){
-
             byte [] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", scenario.getName());
-
         }
 
         System.out.println("AFTER--Teardown steps are being applied...");

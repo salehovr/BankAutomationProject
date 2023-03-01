@@ -71,7 +71,7 @@ public class AccountActivityPage {
     public boolean columnBlank(int column){
         String check = "";
         for (int i = 1; i <= rows.size(); i++) {
-            String locator = "(//table[@class='table table-condensed table-hover'])[2]/tbody/tr["+i+"]/td["+column+"]";
+            String locator = "(//table[@class='table table-condensed table-hover'])[2]/tbody/tr[" + i +"]/td[" + column + "]";
             check+=Driver.getDriver().findElement(By.xpath(locator)).getText();
         }
         check=check.trim();

@@ -9,16 +9,16 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class BasePage {
-    public BasePage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public BasePage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
-@FindBy(className = "active")
+    @FindBy(className = "active")
     public WebElement selectedTab;
 
 
-    public void getTab(String menu){
-        String menuLocator = "//a[.='"+menu+"']";
+    public void getTab(String menu) {
+        String menuLocator = "//a[.='" + menu + "']";
 
         Driver.getDriver().findElement(By.xpath(menuLocator)).click();
         BrowserUtils.sleep(1);

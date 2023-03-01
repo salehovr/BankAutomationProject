@@ -10,8 +10,8 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 public class payBillsPage {
-    public payBillsPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public payBillsPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(id = "sp_payee")
@@ -38,7 +38,7 @@ public class payBillsPage {
     @FindBy(linkText = "Add New Payee")
     public WebElement AddNewPayee;
 
-    @FindBy(id="add_new_payee")
+    @FindBy(id = "add_new_payee")
     public WebElement addButton;
 
     @FindBy(linkText = "Purchase Foreign Currency")
@@ -51,26 +51,27 @@ public class payBillsPage {
     @FindBy(id = "pc_currency")
     public WebElement pcCurrency;
 
-    public boolean isContained (List<String> dataTable){
+    public boolean isContained(List<String> dataTable) {
         boolean flag = true;
         Select currency = new Select(pcCurrency);
         List<WebElement> options = currency.getOptions();
-        String currencyList="";
+        String currencyList = "";
         for (WebElement option : options) {
-            currencyList+=" "+option.getText();
+            currencyList += " " + option.getText();
         }
         for (String money : dataTable) {
-            if (!(currencyList.contains(money))){
+            if (!(currencyList.contains(money))) {
                 flag = false;
             }
         }
         return flag;
     }
 
-    public WebElement getYearStatement(String year){
-        return Driver.getDriver().findElement(By.xpath("//div[@class='pull-left']//ul//li//a[.='"+year+"']"));
+    public WebElement getYearStatement(String year) {
+        return Driver.getDriver().findElement(By.xpath("//div[@class='pull-left']//ul//li//a[.='" + year + "']"));
     }
-    public List<WebElement> getAllStatements(String year){
-        return Driver.getDriver().findElements(By.xpath("//div[@id='os_"+year+"']//tr//td[1]/a"));
+
+    public List<WebElement> getAllStatements(String year) {
+        return Driver.getDriver().findElements(By.xpath("//div[@id='os_" + year + "']//tr//td[1]/a"));
     }
 }

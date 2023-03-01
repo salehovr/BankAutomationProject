@@ -1,9 +1,8 @@
 package com.zerobank.utilities;
 
-import io.cucumber.java.hu.Ha;
 import org.junit.Assert;
-import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
@@ -16,10 +15,11 @@ import static org.junit.Assert.assertTrue;
 public class BrowserUtils {
 
     /**
-    This method accepts String expected title
-    @param expectedTitle
+     * This method accepts String expected title
+     *
+     * @param expectedTitle
      */
-    public static void assertTitle(String expectedTitle){
+    public static void assertTitle(String expectedTitle) {
 
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
         wait.until(ExpectedConditions.titleIs(expectedTitle));
@@ -29,11 +29,12 @@ public class BrowserUtils {
         Assert.assertEquals(expectedTitle, actualTitle);
     }
 
-        /**
-        This method accepts a List<WebElements> and returns List<String>
-        @param webElementList
+    /**
+     * This method accepts a List<WebElements> and returns List<String>
+     *
+     * @param webElementList
      */
-    public static List<String> getElementsText(List<WebElement> webElementList){
+    public static List<String> getElementsText(List<WebElement> webElementList) {
 
         //Create placeholder List<String>
         List<String> actualAsString = new ArrayList<>();
@@ -48,7 +49,7 @@ public class BrowserUtils {
 
     }
 
-    public static Set<String> getElementsTextWithoutDouble(List<WebElement> webElementList){
+    public static Set<String> getElementsTextWithoutDouble(List<WebElement> webElementList) {
 
         //Create placeholder List<String>
         Set<String> actualAsString = new HashSet<>();
@@ -275,10 +276,6 @@ public class BrowserUtils {
     }
 
 
-
-
-
-
     /*
     Method that will accept int  arg
     Wait for given second duration
@@ -294,7 +291,7 @@ public class BrowserUtils {
      */
     public static void sleep(int second) {
 
-        second*=1000;
+        second *= 1000;
 
         try {
 
